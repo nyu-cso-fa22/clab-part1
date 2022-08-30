@@ -38,7 +38,7 @@ unsigned char get_exponent_field(float f)
 	//TODO: Your code here.
 }
 
-//Return the precision of floating point number f
+//Bonus problem: Return the precision of floating point number f
 //Precision is the difference f'-f such that f' is the 
 //smallest *representable* floating point number larger than f  
 float get_precision(float f)
