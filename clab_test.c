@@ -89,8 +89,12 @@ void TestBitFloat()
         f, *(int *)&f, (-1)*(i+1)+127, r);
   }
   printf("passed\n");
+  printf("---Test bitfloat.c Passed\n");  
+}
 
-
+void TestBonus()
+{
+  printf("---Start testing bonus problem in bitfloat.c\n");  
   printf("      get_precision...");
   float fmin = FLT_TRUE_MIN;
   for (unsigned int i = 0; i < 254; i++) {
@@ -105,8 +109,9 @@ void TestBitFloat()
       i, input, *(int *)&input, f, *(int *)&f, r, *(int *)&r);
   }
   printf("passed\n");
-  printf("---Test bitfloat.c Passed\n");  
+  printf("---Test bonus problem in bitfloat.c Passed\n");  
 }
+
 
 void TestPtr()
 {
@@ -198,8 +203,8 @@ typedef void (*TestFunc)();
 
 int main(int argc, char **argv)
 {
-#define NUM_TESTS 3
-	TestFunc fs[NUM_TESTS]= {TestBitFloat, TestPtr, TestArray};
+#define NUM_TESTS 4
+	TestFunc fs[NUM_TESTS]= {TestBitFloat, TestPtr, TestArray, TestBonus};
 
   struct timespec ts;
   clock_gettime(CLOCK_REALTIME, &ts);
