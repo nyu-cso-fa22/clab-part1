@@ -97,6 +97,7 @@ void TestBonus()
   printf("---Start testing bonus problem in bitfloat.c\n");  
   printf("      get_precision...");
   float fmin = FLT_TRUE_MIN;
+  float p = fmin;
   for (unsigned int i = 0; i < 254; i++) {
     unsigned fi = *(int *)&fmin;
     fi |= (i << 23);
@@ -104,9 +105,12 @@ void TestBonus()
     float m = (rand() % 100)/100.0 + 1.0;
     float input = m*f;
     float r = get_precision(input); 
-    panic_cond(r>f?(r-f)<= FLT_TRUE_MIN:(f-r)<=FLT_TRUE_MIN,
+    panic_cond(r>p?(r-p)<= FLT_TRUE_MIN:(p-r)<=FLT_TRUE_MIN,
       "i=%d float %E (bit pattern %08x) precision should be %E %08x (returned %E %08x)",
-      i, input, *(int *)&input, f, *(int *)&f, r, *(int *)&r);
+      i, input, *(int *)&input, p, *(unsigned int *)&p, r, *(unsigned int *)&r);
+    if (i >=1)
+      p = p*2.0;
+
   }
   printf("passed\n");
   printf("---Test bonus problem in bitfloat.c Passed\n");  
